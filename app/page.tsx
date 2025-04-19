@@ -2,8 +2,19 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Toaster } from "@/components/ui/toaster"
-import { signOut } from 'next-auth/react';
+import { signOut,useSession } from 'next-auth/react';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 export default function Home() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) {
+      // If the user is not logged in, redirect them to the login page
+      router.push("/login");
+    }
+  }, [session]);
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       {/* Header */}
