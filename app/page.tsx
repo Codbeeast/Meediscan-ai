@@ -2,19 +2,24 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Toaster } from "@/components/ui/toaster"
-import { signOut,useSession } from 'next-auth/react';
-import { useRouter } from "next/router";
+import { signOut,useSession,signIn } from 'next-auth/react';
+import { useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
 import { useEffect } from "react";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 export default function Home() {
-  const { data: session } = useSession();
+
+  const { data: session } = useSession(); // Use useSession for client-side session management
   const router = useRouter();
 
-  useEffect(() => {
-    if (!session) {
-      // If the user is not logged in, redirect them to the login page
-      router.push("/login");
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   console.log("Session data:", session);
+  //   if (!session) {
+  //     console.log("Redirecting to login page...");
+  //     router.push("/login");
+  //   }
+  // }, [session, router]);
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       {/* Header */}
@@ -67,12 +72,21 @@ export default function Home() {
             >
               Get Started
             </Link>
-            <button
-      onClick={() => signOut({ callbackUrl: '/login' })}
-      className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md shadow-md"
-    >
-      Logout
-    </button>
+            {session ? (
+        <button
+          onClick={() => signOut({ callbackUrl: '/login' })}
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-1.5 rounded-md shadow-md"
+        >
+          Logout
+        </button>
+      ) : (
+        <button
+          onClick={()=>router.push('/login')}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-1.5 rounded-md shadow-md"
+        >
+          Login
+        </button>
+      )}
             <button className="md:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

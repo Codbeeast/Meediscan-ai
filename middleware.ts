@@ -1,25 +1,25 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req:NextRequest) {
   const token = await getToken({ req });
-  const isAuth = !!token; // Check if the user is authenticated
-  const isLoginPage = req.nextUrl.pathname === "/login" || req.nextUrl.pathname === "/signup";
+  const isAuth = !!token;
+  const isLoginPage = req.nextUrl.pathname.startsWith("/login");
 
-  // If the user is authenticated and they try to visit the login/signup page, redirect to the home page
   if (isAuth && isLoginPage) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // If the user is not authenticated and they try to visit any page except login/signup, redirect to the login page
-  if (!isAuth && !isLoginPage) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
+  // if (!isAuth && !isLoginPage && !req.nextUrl.pathname.startsWith("/api")) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
 
-  return NextResponse.next(); // Allow the request to continue
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/", "/login", "/signup"], // Apply middleware to these paths
+  matcher: ["/login", "/"], // Add protected routes here
 };
+
+

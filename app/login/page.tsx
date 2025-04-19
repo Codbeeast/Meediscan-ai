@@ -5,19 +5,19 @@ import { useState, useEffect } from "react";
 import Link from "next/link"
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-export default function LoginPage() {
+import { getSession } from "next-auth/react";
+import { redirect } from "next/navigation"; // Import redirect from next/navigation
+
+
+
+export default  function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { data: session } = useSession();
-  const router = useRouter();
+  
 
-  useEffect(() => {
-    if (session) {
-      // If the user is authenticated, redirect to the home page
-      router.push("/home"); // Or any other route you want to send the user to
-    }
-  }, [session]);
+  // If session exists (user is logged in), redirect to the home page
+ 
 
   return (
     <div className="min-h-screen flex">
