@@ -25,7 +25,7 @@ export default  function LoginPage() {
       <div className="hidden md:flex w-1/2 bg-gradient-to-br from-cyan-100 to-blue-200 items-center justify-center p-10">
         <div className="text-center">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-LU4xIHU3C5qEQqltKlAuoeDqm4DOb-MCAA&s"
+            src="https://play-lh.googleusercontent.com/bmh788PlLD4zf5EBVyx41t41P4HwsMvFlbNhHHWqgG_2WYYzDFskYM9YVu_2qeUevEQ=s256-rw"
             alt="Medical graphic"
             className="w-60 mx-auto mb-6"
           />
@@ -39,7 +39,7 @@ export default  function LoginPage() {
         <div className="w-full max-w-md bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-8 text-white">
         <div className=" p-2 ">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-LU4xIHU3C5qEQqltKlAuoeDqm4DOb-MCAA&s"
+          src="https://play-lh.googleusercontent.com/bmh788PlLD4zf5EBVyx41t41P4HwsMvFlbNhHHWqgG_2WYYzDFskYM9YVu_2qeUevEQ=s256-rw"
           alt="Google logo"
           className="w-15 h-20 mx-auto mb-6 rounded-2xl"
         />
