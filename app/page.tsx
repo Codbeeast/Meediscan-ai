@@ -212,18 +212,28 @@ export default function Home() {
               <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-50 rounded-lg -z-10"></div>
               <div className="bg-white p-4 rounded-xl shadow-lg">
                 <div className="aspect-[4/3] relative rounded-lg overflow-hidden mb-4 bg-slate-100">
-                  <Image
-                    src="/placeholder.svg?height=600&width=800"
-                    alt="X-ray scan visualization"
-                    width={800}
-                    height={600}
-                    className="object-cover"
-                  />
+                <video
+  src="https://v1.pinimg.com/videos/mc/hls/3d/9f/d8/3d9fd8ec98402b9f9568f52c482ee965.m3u8"
+  width={800}
+  height={600}
+  className="object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+  controls={false}
+  preload="auto"
+/>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-                    <div className="p-4 text-white">
-                      <div className="text-sm font-medium">Chest X-ray</div>
-                      <div className="text-xs opacity-80">High-resolution scan</div>
-                    </div>
+                  <video
+  src="/videoplayback.mp4"
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+/>
+
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
